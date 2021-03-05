@@ -1,41 +1,32 @@
-/**
- * @class Subject
- * @property {Array} observers
- */
 class Observable {
 
     constructor() {
-        this.observers = [];
+        this.subscribers = [];
     }
 
     addSubscriber(observer) {
-        this.observers.push(observer);
+        this.subscribers.push(observer);
     }
 
     removeSubscriber(observer) {
-        const removeIndex = this.observers.findIndex(obs => observer === obs);
+        const removeIndex = this.subscribers.findIndex(obs => observer === obs);
 
         if (removeIndex !== -1) {
-            this.observers = this.observers.slice(removeIndex, 1);
+            this.subscribers = this.subscribers.slice(removeIndex, 1);
         }
     }
 
     notify(data) {
-        if (this.observers.length > 0) {
-            this.observers.forEach(observer => observer.update(data));
+        if (this.subscribers.length > 0) {
+            this.subscribers.forEach(subscriber => subscriber.update(data));
         }
     }
 }
 
-/** @class Observer */
 class Subscriber {
     update() {}
 }
 
-/**
- * @class State
- * @property {Object} state
- */
 class State extends Observable {
 
     state = {};
@@ -95,15 +86,13 @@ class ListElement extends Subscriber {
     }
 }
 
-const store = new State({ fruits: ['apples', 'pares', 'tomatoes', 'kiwis'] });
+const store = new State({});
 
 const fruitList = new ListElement('list-container', 'fruits');
 
 store.addSubscriber(fruitList);
 
-//TODO: render on subscribe
-fruitList.render(store.get());
-
+store.update({ fruits: ['apples', 'pares', 'tomatoes', 'kiwis'] });
 
 /** Some generic listener to be able to add to our variable */
 const fruitInput = document.getElementById('fruit-input');

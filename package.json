@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "vue": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "example1": "nodemon --exec \"serve example1\"",
+    "example2": "nodemon --exec \"serve example2\""
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -13,6 +15,8 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0"
+    "@vue/compiler-sfc": "^3.0.0",
+    "nodemon": "^2.0.7",
+    "serve": "^11.3.2"
   }
 }

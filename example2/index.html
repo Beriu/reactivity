@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Example 2</title>
+    <style>
+        :root {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        main {
+            height: fit-content;
+            padding: 1rem;
+            border: solid 1px rgba(0, 0, 0, 0.3);
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <main>
+        <section id="list-container"></section>
+        <input id="fruit-input" placeholder="melon"/>
+    </main>
+</div>
+
+<script src="./reactive.js"></script>
 </body>
 </html>
